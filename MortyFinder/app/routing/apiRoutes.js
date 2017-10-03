@@ -11,9 +11,9 @@ var person = [];
 
 app = express();
 
-function apiRoute(app, __dirname){
+function apiRoute(app, __dirname, theMorties){
     
-    app.post("/api/new", function(req, res){
+    app.post("/api/friends", function(req, res){
        
         var newPerson = req.body; 
         
@@ -22,6 +22,12 @@ function apiRoute(app, __dirname){
 
         person.push(JSON.stringify(newPerson));
         console.log(person);
+    });
+
+    app.get("/api/friends", function(req, res){
+
+        return res.json(theMorties);
+
     });
 
 }

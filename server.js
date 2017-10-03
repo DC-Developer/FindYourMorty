@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const htmlRoutes = require("./MortyFinder/app/routing/htmlRoutes");
 const runServer = require("./MortyFinder/app/routing/runServer");
 const apiRoutes = require("./MortyFinder/app/routing/apiRoutes");
-
+const theMorties = require("./MortyFinder/app/data/friends");
 const app = express();
 var PORT = 3000;
 
@@ -16,4 +16,4 @@ runServer(app, PORT);
 //app.use("/", apiRoutes);
 app.use("/", htmlRoutes);
 app.use("/survey", htmlRoutes);
-apiRoutes(app, __dirname);
+apiRoutes(app, __dirname, theMorties);
