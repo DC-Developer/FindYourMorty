@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Survey</title>
 </head>
 <body>
     <h1>Survey Stuff</h1>
+
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Choose your favorite color</label>
+          <select class="form-control" id="exampleFormControlSelect1" id="formy">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Purple</option>
+            <option>White</option>
+          </select>
+          <button type="submit" id="inputSubmit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </body>
+<script>
+    $("#inputSubmit").on("click", function(){
+        var userInput = {
+            question1: $("#formy").val()
+
+        };
+        $.post("/api/new", userInput)
+        .done(function(){
+            console.log(data);
+            alert("Added person data");
+        });
+
+    });
+
+
+
+</script>
+
 </html>

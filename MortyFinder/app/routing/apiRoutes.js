@@ -1,25 +1,37 @@
-const express = require('express')
-const router = express.Router();
+// basically their will only be one function that contains the app.get function that will route the user to the html files. it will contain one function that will
+//have a parameter to pass in the url 
+
+const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const router = express.Router();
+
+var url = "";
+
+var person = {};
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// middleware that is specific to this router
-router.use(function timeLog (req, res, next) {
-    var url = req.url; 
-    console.log("url: "+ url);
-    console.log('Time: ', Date.now());
-  next();
+app = express();
+
+router.use(bodyParser.urlencoded({ extended: false }));//used only in apiRoutes because its handling the json objects
+router.use(bodyParser.json());
+
+router.post("/api/new", function(req, res){
+    var newPerson = req.body; 
+    console.log(newPerson);
+
+    person.push(newPerson);
+    res.json(newPerson);
+    next();
+
 });
-// define the home page route
-router.get('/', function (req, res) {
-    res.sendFile("home.html", {root: (__dirname, "MortyFinder/app/public")});
-});//working route
 
-router.get('/survey', function (req, res) {
-    res.sendFile("survey.html", {root: (__dirname, "MortyFinder/app/public")});
-});//working route
+router.get("/api/list", function(req,res){
+    console.log(person);
+    return res.json(person);
 
-module.exports = router;
+});
+
+
+
+module.exports = router; 

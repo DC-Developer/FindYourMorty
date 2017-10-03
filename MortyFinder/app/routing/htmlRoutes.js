@@ -1,25 +1,23 @@
-// basically their will only be one function that contains the app.get function that will route the user to the html files. it will contain one function that will
-//have a parameter to pass in the url 
-
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express')
+const router = express.Router();
 const path = require("path");
 
-var url = "";
 
 
-app = express();
+// middleware that is specific to this router
+router.use(function timeLog (req, res, next) {
+    var url = req.url; 
+    console.log("url: "+ url);
+    console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function (req, res) {
+    res.sendFile("home.html", {root: (__dirname, "MortyFinder/app/public")});//have to extend the link
+});//working route
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+router.get('/survey', function (req, res) {
+    res.sendFile("survey.html", {root: (__dirname, "MortyFinder/app/public")});
+});//working route
 
-function router(URL){
-    
-    app.get(URL, function(req, res){
-        
-            res.sendFile(path.join(__dirname,URL+".html"));
-        });
-
-}
-
-module.exports = router; 
+module.exports = router;

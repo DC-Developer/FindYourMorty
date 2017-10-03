@@ -2,7 +2,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const htmlRoute = require("./MortyFinder/app/routing/htmlRoutes");
+const htmlRoutes = require("./MortyFinder/app/routing/htmlRoutes");
 const runServer = require("./MortyFinder/app/routing/runServer");
 const apiRoutes = require("./MortyFinder/app/routing/apiRoutes");
 
@@ -12,5 +12,6 @@ var PORT = 3000;
 
 runServer(app, PORT);
 //app.use("/", apiRoutes);
-app.use("/", apiRoutes);
-app.use("/survey", apiRoutes);
+app.use("/", htmlRoutes);
+app.use("/survey", htmlRoutes);
+app.use("/api/new", apiRoutes);
