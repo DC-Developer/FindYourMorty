@@ -1,8 +1,8 @@
 var morties = [
     {
-        "name":"Evil Morty",
-        "photo":"",
-        "scores":[
+        name:"Evil Morty",
+        photo:"",
+        scores:[
             1,
             5,
             1,
@@ -15,9 +15,9 @@ var morties = [
           ]
 
     },{
-        "name":"Secretary/Advisor Morty",
-        "photo":"",
-        "scores":[
+        name:"Secretary/Advisor Morty",
+        photo:"",
+        scores:[
             3,
             3,
             4,
@@ -30,9 +30,9 @@ var morties = [
           ]
 
     },{
-        "name":"Mortiest Morty",
-        "photo":"",
-        "scores":[
+        name:"Mortiest Morty",
+        photo:"",
+        scores:[
             3,
             3,
             4,
@@ -45,9 +45,9 @@ var morties = [
           ]
 
     },{
-        "name":"Detective Morty",
-        "photo":"",
-        "scores":[
+        name:"Detective Morty",
+        photo:"",
+        scores:[
             3,
             5,
             3,

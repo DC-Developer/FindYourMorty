@@ -16,4 +16,5 @@ runServer(app, PORT);
 //app.use("/", apiRoutes);
 app.use("/", htmlRoutes);
 app.use("/survey", htmlRoutes);
+
 apiRoutes(app, __dirname, theMorties);
