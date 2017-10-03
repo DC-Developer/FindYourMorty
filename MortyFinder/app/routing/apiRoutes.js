@@ -2,36 +2,33 @@
 //have a parameter to pass in the url 
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
-const router = express.Router();
+
 
 var url = "";
 
-var person = {};
-
+var person = [];
 
 app = express();
 
-router.use(bodyParser.urlencoded({ extended: false }));//used only in apiRoutes because its handling the json objects
-router.use(bodyParser.json());
+function apiRoute(app, __dirname){
+    
+    app.post("/api/new", function(req, res){
+       
+        var newPerson = req.body; 
+        
+        console.log("new person: "+ JSON.stringify(newPerson));
+        res.json(newPerson);
 
-router.post("/api/new", function(req, res){
-    var newPerson = req.body; 
-    console.log(newPerson);
+        person.push(JSON.stringify(newPerson));
+        console.log(person);
+    });
 
-    person.push(newPerson);
-    res.json(newPerson);
-    next();
-
-});
-
-router.get("/api/list", function(req,res){
-    console.log(person);
-    return res.json(person);
-
-});
+}
 
 
 
-module.exports = router; 
+
+
+
+module.exports = apiRoute; 

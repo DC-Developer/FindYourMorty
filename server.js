@@ -9,9 +9,11 @@ const apiRoutes = require("./MortyFinder/app/routing/apiRoutes");
 const app = express();
 var PORT = 3000;
 
+app.use(bodyParser.urlencoded({ extended: false }));//used only in apiRoutes because its handling the json objects
+app.use(bodyParser.json());
 
 runServer(app, PORT);
 //app.use("/", apiRoutes);
 app.use("/", htmlRoutes);
 app.use("/survey", htmlRoutes);
-app.use("/api/new", apiRoutes);
+apiRoutes(app, __dirname);

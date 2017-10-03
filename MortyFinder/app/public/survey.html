@@ -9,35 +9,153 @@
     <title>Survey</title>
 </head>
 <body>
-    <h1>Survey Stuff</h1>
+    <style>
+       
+        .form-group{text-align: center}
+    </style>
+    <div class="jumbotron text-center">
+            <h1>Processing Module</h1>
 
-    <form>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Choose your favorite color</label>
-          <select class="form-control" id="exampleFormControlSelect1" id="formy">
-            <option>Red</option>
-            <option>Blue</option>
-            <option>Green</option>
-            <option>Purple</option>
-            <option>White</option>
-          </select>
-          <button type="submit" id="inputSubmit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+    </div>
+    
+
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q1"><p>1. You enjoy inflicting pain</p></label>
+            <select class="form-control" id="s1">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q2"><p>2. You aren't confident in yourself</p></label>
+            <select class="form-control" id="s2">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q3"><p>3. You want to kill Rick</p></label>
+            <select class="form-control" id="s3">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q4"><p>4. You aren't afraid of taking risks</p></label>
+            <select class="form-control" id="s4">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q5"><p>5. You play by the rules</p></label>
+            <select class="form-control" id="s5">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q6"><p>6. You are from a different dimension</p></label>
+            <select class="form-control" id="s6">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q7"><p>7. You seek domination</p></label>
+            <select class="form-control" id="s7">
+                    <option></option>
+                    <option value="1">1-strongly agree</option>
+                    <option value="2">2-agree</option>
+                    <option value="3">3-neutral</option>
+                    <option value="4">4-disagree</option>
+                    <option value="5">5-strongly disagree</option>
+            </select>
+            <hr class="my-4" >
+    </div>
+    <div class="form-group">
+            <label for="exampleFormControlSelect1" id="q8"><p>8. You are not human</p></label>
+            <select class="form-control" id="s8">
+                    <option></option>
+              <option value="1">1-strongly agree</option>
+              <option value="2">2-agree</option>
+              <option value="3">3-neutral</option>
+              <option value="4">4-disagree</option>
+              <option value="5">5-strongly disagree</option>
+            </select>
+    <button type="submit" id="inputSubmit" class="btn btn-primary"value="">Submit</button>
+    </div>
+
+
+
 </body>
-<script>
-    $("#inputSubmit").on("click", function(){
-        var userInput = {
-            question1: $("#formy").val()
+<script type="text/javascript">
+ 
+$("#inputSubmit").on("click", function(event){
+    event.preventDefault();
 
-        };
-        $.post("/api/new", userInput)
-        .done(function(){
-            console.log(data);
-            alert("Added person data");
-        });
+    var userScore = [];
+    var score = [];
+
+    for(i=1; i <= 8; i++){
+        score.push($("#s"+i).val());
+
+    }
+     
+    console.log(score);
+    userScore += score; 
+    console.log("userscore: "+userScore);
+    
+    var newUser = {
+        scores: userScore
+    };
+    
+    console.log("user score: "+newUser);
+
+    $.post("/api/new", newUser).done(function(data){
+        console.log("result: "+data.scores);
 
     });
+
+
+});
+       /* var userInput = {
+            question1: $("input[type ='checkbox']").val()
+
+        };*/
+        
+
+    
 
 
 
