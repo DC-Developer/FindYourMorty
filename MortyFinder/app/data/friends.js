@@ -1,7 +1,7 @@
 var morties = [
     {
         "name":"Evil Morty",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"",
         "scores":[
             1,
             5,
@@ -16,7 +16,7 @@ var morties = [
 
     },{
         "name":"Secretary/Advisor Morty",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"",
         "scores":[
             3,
             3,
@@ -31,7 +31,7 @@ var morties = [
 
     },{
         "name":"Mortiest Morty",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"",
         "scores":[
             3,
             3,
@@ -46,7 +46,7 @@ var morties = [
 
     },{
         "name":"Detective Morty",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "photo":"",
         "scores":[
             3,
             5,
