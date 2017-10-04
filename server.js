@@ -9,7 +9,7 @@ const theMorties = require("./MortyFinder/app/data/friends");
 const app = express();
 var PORT = 3000;
 
-app.use(bodyParser.urlencoded({ extended: false }));//used only in apiRoutes because its handling the json objects
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 runServer(app, PORT);

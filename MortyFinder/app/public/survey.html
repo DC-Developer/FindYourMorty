@@ -136,23 +136,17 @@ $("#inputSubmit").on("click", function(event){
     var userScore = [];
     var score = [];
 
-    for(i=1; i <= 8; i++){
-        score.push($("#s"+i).val().trim());
 
-    }
-     
-    console.log(score);
-    userScore += score; 
     console.log("userscore: "+userScore);
     
     var newUser = {
-        scores: userScore
+        scores: [$("#s1").val(), $("#s2").val(), $("#s3").val(), $("#s4").val(), $("#s5").val(), $("#s6").val(), $("#s7").val(), $("#s8").val(), ]
     };
     
     console.log("user score: "+newUser);
 
     $.post("/api/friends", newUser).done(function(data){
-        console.log("result: "+data.scores);
+        console.log("result: "+data);
 
     });
 

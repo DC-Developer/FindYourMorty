@@ -17,7 +17,7 @@ function apiRoute(app, __dirname, theMorties){
         
         newPerson = req.body; 
         
-        console.log("new person: "+ newPerson.scores[0]);
+        //console.log("new person: "+ newPerson.scores[0]);
         res.json(newPerson);
 
         //person.push(JSON.stringify(newPerson.scores[1]));
@@ -29,12 +29,21 @@ function apiRoute(app, __dirname, theMorties){
 
   
         //make a variable to hold in differenes between array indexes
+        var person = [];
         var differences = [];
         var diffTotal = [];
         var diffScore = [];
         var logDiff = [];
 
+        //going to loop through newPerson and only store in the int values
 
+        for(i=0; i < newPerson.length; i++){
+            if(newPerson.score[i] != NaN){
+                person.push(newPerson.score[i]);
+            }
+        }
+
+        
 
         //console.log("the morties scores: ",theMorties[0].scores);
         for(count =0; count <=   3; count ++){
@@ -43,7 +52,7 @@ function apiRoute(app, __dirname, theMorties){
 
                    
                    
-                    console.log("person score: ", newPerson.scores[i]);
+                    //console.log("person score: ", newPerson.scores[i]);
                     //console.log("the morties: ", theMorties[count].scores[i]);
                     
                     //console.log("differences: ",differences);
