@@ -7,15 +7,15 @@ const path = require("path");
 
 var url = "";
 
-var person = [];
+var newPerson = [];
 
 app = express();
 
 function apiRoute(app, __dirname, theMorties){
     
     app.post("/api/friends", function(req, res){
-       
-        var newPerson = req.body; 
+        
+        newPerson = req.body; 
         
         console.log("new person: "+ newPerson.scores[0]);
         res.json(newPerson);
@@ -23,35 +23,44 @@ function apiRoute(app, __dirname, theMorties){
         //person.push(JSON.stringify(newPerson.scores[1]));
         //console.log(person);
 
-        newPerson.scores.split("");
-        console.log(newPerson.scores);
+        //newPerson.scores.split("','");
+        console.log("New person scores: ", newPerson.scores);
+        
 
+  
         //make a variable to hold in differenes between array indexes
         var differences = [];
         var diffTotal = [];
-        var count = 0;
+        var diffScore = [];
         var logDiff = [];
 
-        //console.log("the morties scores: ",theMorties[0].scores);
-        while(count < 3){
-            for(i=0; i < 8 ; i++){
-                
-                    differences = Math.abs(newPerson.scores[i+1] - theMorties[count].scores[i]);
-                    console.log("differences: ",differences);
 
-                    diffTotal.push(differences); 
+
+        //console.log("the morties scores: ",theMorties[0].scores);
+        for(count =0; count <=   3; count ++){
+            for(i=0; i < 8 ; i++){
+                    
+
+                   
+                   
+                    console.log("person score: ", newPerson.scores[i]);
+                    //console.log("the morties: ", theMorties[count].scores[i]);
+                    
+                    //console.log("differences: ",differences);
+
+                   
 
                     var diffOBJ = {
                         name: theMorties[count].name,
-                        diff: diffTotal
+                        diff: diffTotal,
+                        score: diffScore
                     }
                     logDiff.push(diffOBJ); 
 
                 }
-                count ++;
-
-        }
-
+            }
+        
+            
         console.log(logDiff);
       
         
