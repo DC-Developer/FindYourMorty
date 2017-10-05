@@ -7,7 +7,7 @@ const runServer = require("./MortyFinder/app/routing/runServer");
 const apiRoutes = require("./MortyFinder/app/routing/apiRoutes");
 const theMorties = require("./MortyFinder/app/data/friends");
 const app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
