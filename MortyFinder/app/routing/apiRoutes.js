@@ -17,9 +17,6 @@ function apiRoute(app, __dirname, theMorties){
         
         newPerson = req.body; 
         
-        //console.log("new person: "+ newPerson.scores[0]);
-        res.json(newPerson);
-
         //person.push(JSON.stringify(newPerson.scores[1]));
         //console.log(person);
 
@@ -34,50 +31,63 @@ function apiRoute(app, __dirname, theMorties){
         var diffTotal = [];
         var diffScore = [];
         var logDiff = [];
+        var holdDiff = 0;
+        //going to loop through newPerson and only store in the int values. cant get the commas out of the array
 
-        //going to loop through newPerson and only store in the int values
-
-        for(i=0; i < newPerson.length; i++){
-            if(newPerson.score[i] != NaN){
-                person.push(newPerson.score[i]);
+        for(i=0; i < newPerson.scores.length; i++){
+            if(i % 2 == 0){
+                person.push(newPerson.scores[i]);
             }
         }
-
         
+        console.log("new array: ", person);
 
+      
         //console.log("the morties scores: ",theMorties[0].scores);
         for(count =0; count <=   3; count ++){
             for(i=0; i < 8 ; i++){
+                    //get the difference for each question
+                    differences = Math.abs(person[i] - theMorties[count].scores[i]);
+                    //push the differences to diffTotal
+                    diffTotal.push(differences); 
+                }//end of nested for-loop
+                console.log("diff total: ", diffTotal);
+                //create a for loop that will loop through the diffTotal and add each value 
+                for(i=0; i < diffTotal.length; i++){
                     
-
-                   
-                   
-                    //console.log("person score: ", newPerson.scores[i]);
-                    //console.log("the morties: ", theMorties[count].scores[i]);
-                    
-                    //console.log("differences: ",differences);
-
-                   
-
-                    var diffOBJ = {
-                        name: theMorties[count].name,
-                        diff: diffTotal,
-                        score: diffScore
-                    }
-                    logDiff.push(diffOBJ); 
+                    holdDiff += diffTotal[i];
 
                 }
-            }
-        
-            
-        console.log(logDiff);
-      
-        
+                console.log("diff added: ", holdDiff);
+                //push holdDiff to diffScore and diffOBJ to logDiff
+                diffScore.push(holdDiff);
+                //declare a diff object that stores in the name, diffTotal and diffScore
+                var diffOBJ = {
+                    name: theMorties[count].name,
+                    diff: diffTotal,
+                    score: diffScore
+                } 
+                logDiff.push(diffOBJ);  
 
+                diffScore = [];
+                holdDiff = 0;
+                diffTotal = [];
 
+            }//end of first for-loop
+            //find the score with the least difference
+            var bestMatchScore = Math.min(logDiff[0].score, logDiff[1].score, logDiff[2].score, logDiff[3].score);
+            var bestMatch = [];
+            //loop through logDiff to find out the corresponding scores person
+           for(i=0; i<logDiff.length; i++){
+                if(bestMatchScore == logDiff[i].score){
+                    bestMatch = logDiff[i];
+                }
+           }
 
+            console.log("Best match: ", bestMatch.name);
+            console.log("Best match score: ", bestMatch.score);
 
-
+            return res.json(bestMatch);
     });
 
     app.get("/api/friends", function(req, res){
