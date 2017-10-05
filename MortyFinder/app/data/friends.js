@@ -1,7 +1,7 @@
 var morties = [
     {
         name:"Evil Morty",
-        photo:"",
+        photo:"https://raw.githubusercontent.com/DC-Developer/FindYourMorty/master/MortyFinder/app/data/images/evilmorty.jpg",
         scores:[
             1,
             5,
@@ -16,7 +16,7 @@ var morties = [
 
     },{
         name:"Secretary/Advisor Morty",
-        photo:"",
+        photo:"https://raw.githubusercontent.com/DC-Developer/FindYourMorty/master/MortyFinder/app/data/images/secretary%20morty.jpg",
         scores:[
             3,
             3,
@@ -31,7 +31,7 @@ var morties = [
 
     },{
         name:"Mortiest Morty",
-        photo:"",
+        photo:"https://raw.githubusercontent.com/DC-Developer/FindYourMorty/master/MortyFinder/app/data/images/Morty.png",
         scores:[
             3,
             3,
@@ -46,7 +46,7 @@ var morties = [
 
     },{
         name:"Detective Morty",
-        photo:"",
+        photo:"https://raw.githubusercontent.com/DC-Developer/FindYourMorty/master/MortyFinder/app/data/images/CopMorty.png",
         scores:[
             3,
             5,
