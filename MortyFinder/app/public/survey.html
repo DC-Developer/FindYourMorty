@@ -136,7 +136,7 @@
             </div>
             <div class="modal-body">
                 <h3 id="matchName"></h3>
-              <img id="matchImg" src="" alt="Img of matching hero" width="100%">
+              <img id="matchImg" src=""  alt= "" width="100%">
             </div>
             <div class="modal-footer">
               <a role="button" class="btn btn-danger btn-lg" href="/" >Close</a>
@@ -168,10 +168,9 @@ $("#inputSubmit").on("click", function(event){
     console.log("user score: "+newUser);
 
     $.post("/api/friends", newUser, function(data){
-          console.log(data.name);
+          console.log(data.photo);
           $("#matchName").text(data.name);
           $("#matchImg").attr("src", data.photo);
-          console.log("best match: "+data.name);
           $("#myModal").modal("toggle");
 
 
