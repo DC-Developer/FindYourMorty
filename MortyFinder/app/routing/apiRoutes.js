@@ -86,7 +86,7 @@ function apiRoute(app, __dirname, theMorties){
 
             console.log("Best match: ", bestMatch.name);
             console.log("Best match score: ", bestMatch.score);
-
+           //loop through theMorties till the name is found, then return the matching index
            for(i=0; i<theMorties.length; i++){
                 if(bestMatch.name == theMorties[i].name){
                     return res.json(theMorties[i]);
